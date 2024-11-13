@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "527447564619",
+    "project_id": "synccantact",
+    "storage_bucket": "synccantact.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527447564619:android:a4156349d64ca0af13c8ce",
+        "android_client_info": {
+          "package_name": "com.example.synccontact"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCm4-qNBiXoQZZGvM3oBxlPhW9R3r9uMBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
