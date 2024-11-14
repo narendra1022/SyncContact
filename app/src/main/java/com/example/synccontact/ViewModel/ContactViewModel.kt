@@ -27,7 +27,7 @@ class ContactViewModel @Inject constructor(
             _uiState.value = _uiState.value.copy(isSyncing = true, isSyncSuccess = false)
 
             try {
-                val contacts = contactRepository.getTodayContacts().first()
+                val contacts = contactRepository.getTodayContacts()
                 contactRepository.syncContactsWithPhone(contacts)
                 _uiState.value = _uiState.value.copy(
                     isSyncing = false,

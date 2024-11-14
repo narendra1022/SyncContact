@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -35,25 +37,20 @@ fun ContactSyncScreen(viewModel: ContactViewModel) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(it), // Add padding to avoid overlap with top bar
+                    .padding(it),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
                 Button(
                     onClick = {
-                        // Trigger sync when button is clicked
                         viewModel.startSync()
                     }
                 ) {
                     Text(text = "Sync Contacts")
                 }
-
-                // Show syncing state (progress bar) while syncing
                 if (uiState.isSyncing) {
                     CircularProgressIndicator()
                 }
-
-                // Show success message only after syncing completes
                 if (uiState.isSyncSuccess) {
                     Text(
                         text = "Contacts Synced Successfully!",
@@ -61,6 +58,17 @@ fun ContactSyncScreen(viewModel: ContactViewModel) {
                         style = MaterialTheme.typography.bodyMedium,
                         modifier = Modifier.padding(top = 16.dp)
                     )
+                    LazyColumn(
+                        modifier = Modifier.padding(top = 16.dp)
+                    ) {
+                        items(uiState.contacts) { contact ->
+                            Text(
+                                text = contact.name,
+                                style = MaterialTheme.typography.bodyLarge,
+                                modifier = Modifier.padding(vertical = 4.dp)
+                            )
+                        }
+                    }
                 }
             }
         }
